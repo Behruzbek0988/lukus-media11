@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LUX MEDIA - Behruzbek Oribjonovning videografiya, brending va IT xizmatlari portfolio sayti.">
+  <title>LUX MEDIA | Visual stories, built with precision</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #050607;
+      --panel: #101214;
+      --panel-2: #191b1f;
+      --line: rgba(177, 220, 220, .15);
+      --text: #f0f5f2;
+      --muted: #9eadae;
+      --gold: #f2bf66;
+      --cyan: #63e6d2;
+      --orange: #ff835f;
+      --radius: 18px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      background-image: linear-gradient(rgba(242, 191, 102, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(242, 191, 102, .035) 1px, transparent 1px);
+      background-size: 88px 88px;
+      mask-image: linear-gradient(to bottom, black, transparent 75%);
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button { cursor: pointer; }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+    .eyebrow { color: var(--cyan); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3, .logo { font-family: 'Space Grotesk', sans-serif; }
+
+    header {
+      position: fixed; z-index: 10; top: 0; left: 0; width: 100%;
+      border-bottom: 1px solid transparent; transition: .25s ease;
+    }
+    header.scrolled { background: rgba(5, 6, 7, .94); border-color: var(--line); backdrop-filter: blur(16px); }
+    .nav { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .logo { display: flex; align-items: center; gap: 11px; font-size: 1rem; letter-spacing: .14em; font-weight: 700; }
+    .logo-image { width: 48px; height: 38px; object-fit: cover; object-position: center; border-radius: 4px; }
+    .nav-links { display: flex; align-items: center; gap: 25px; color: var(--muted); font-size: .82rem; }
+    .nav-links a { transition: color .2s; }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-cta, .button-primary { background: var(--gold); color: #15120c; border: 0; padding: 12px 18px; border-radius: 7px; font-weight: 700; font-size: .8rem; transition: transform .2s, background .2s; }
+    .nav-cta:hover, .button-primary:hover { background: #ffd78d; transform: translateY(-2px); }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--line); color: var(--text); padding: 8px 10px; border-radius: 6px; }
+
+    .hero { min-height: 730px; padding: 156px 0 90px; position: relative; display: flex; align-items: center; overflow: hidden; background: radial-gradient(circle at 78% 38%, rgba(99, 230, 210, .1), transparent 28%), radial-gradient(circle at 12% 12%, rgba(242, 191, 102, .07), transparent 25%); }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 60px; }
+    .hero h1 { max-width: 700px; font-size: clamp(3.4rem, 8vw, 7.2rem); line-height: .93; letter-spacing: -.045em; margin: 18px 0 25px; }
+    .hero h1 em { color: var(--gold); font-style: normal; }
+    .hero-copy { max-width: 490px; color: var(--muted); font-size: 1.02rem; }
+    .hero-actions { display: flex; gap: 12px; margin-top: 34px; align-items: center; }
+    .button-secondary { border: 1px solid var(--line); color: var(--text); padding: 11px 17px; border-radius: 7px; font-size: .8rem; font-weight: 700; }
+    .button-secondary:hover { border-color: var(--cyan); color: var(--cyan); }
+    .hero-visual { position: relative; min-height: 420px; }
+    .hero-image { width: 88%; height: 400px; margin-left: auto; object-fit: cover; filter: saturate(.55) contrast(1.15); border-radius: 5px; border: 1px solid rgba(242, 191, 102, .32); }
+
+    section { padding: 110px 0; position: relative; }
+    .section-head { display: flex; justify-content: space-between; gap: 30px; align-items: end; margin-bottom: 46px; }
+    .section-head h2 { font-size: clamp(2.1rem, 4vw, 3.8rem); line-height: 1; letter-spacing: -.04em; margin: 12px 0 0; }
+    .section-head p { max-width: 370px; margin: 0; color: var(--muted); font-size: .9rem; }
+    .about-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: 70px; align-items: start; }
+    .about-photo { height: 440px; width: 100%; object-fit: cover; filter: grayscale(.2); }
+    .about-copy h3 { font-size: 2rem; margin: 0 0 14px; }
+    .about-copy p { color: var(--muted); max-width: 560px; }
+    .skill-list { border-top: 1px solid var(--line); margin-top: 34px; }
+    .skill { display: flex; justify-content: space-between; padding: 17px 0; border-bottom: 1px solid var(--line); font-size: .9rem; }
+    .skill span { color: var(--gold); font-size: .75rem; }
+
+    .services { background: linear-gradient(180deg, #090a0b, #111416); }
+    .price-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .price-card { display: flex; flex-direction: column; min-height: 365px; padding: 24px; border: 1px solid var(--line); background: var(--panel); border-radius: var(--radius); transition: transform .25s, border-color .25s; }
+    .price-card:hover { transform: translateY(-7px); border-color: var(--gold); }
+    .price-card.featured { border-color: var(--cyan); background: linear-gradient(145deg, #10282d, var(--panel)); }
+    .price-card h3 { font-size: 1.2rem; line-height: 1.15; min-height: 64px; }
+    .price { color: var(--gold); font-family: 'Space Grotesk'; font-size: 1.65rem; font-weight: 700; margin: 24px 0 5px; }
+    .price small { color: var(--muted); font-family: 'DM Sans'; font-size: .74rem; font-weight: 400; }
+    .price-card ul { color: var(--muted); list-style: none; padding: 0; margin: 12px 0 25px; font-size: .83rem; }
+    .price-card li { padding: 6px 0 6px 18px; position: relative; }
+    .price-card li::before { content: '—'; position: absolute; left: 0; color: var(--cyan); }
+    .order-btn { margin-top: auto; border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 12px; border-radius: 7px; font-weight: 700; font-size: .8rem; }
+    .order-btn:hover { background: var(--gold); color: #15120c; }
+
+    .security-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; }
+    .security-grid h2 { font-size: clamp(2.1rem, 4vw, 3.8rem); line-height: 1; letter-spacing: -.04em; margin: 12px 0 25px; }
+    .security-grid > div > p { max-width: 470px; color: var(--muted); }
+    .promise-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .promise { padding: 25px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+    .promise b { display: block; color: var(--gold); font-family: 'Space Grotesk'; font-size: 1.05rem; margin-bottom: 8px; }
+    .promise p { margin: 0; color: var(--muted); font-size: .78rem; }
+
+    .contact { border-top: 1px solid var(--line); }
+    .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; }
+    .contact h2 { font-size: clamp(2.3rem, 5vw, 4.4rem); line-height: .95; margin: 12px 0 22px; }
+    .contact-intro { color: var(--muted); max-width: 350px; }
+    .contact-links { margin-top: 28px; display: grid; gap: 10px; }
+    .contact-links a { display: flex; align-items: center; gap: 12px; padding: 12px 14px; color: var(--text); border: 1px solid var(--line); background: var(--panel); border-radius: 8px; font-size: .82rem; transition: border-color .2s, transform .2s; }
+    .contact-links a:hover { color: var(--gold); border-color: var(--gold); transform: translateX(4px); }
+    .contact-links img { width: 22px; height: 22px; object-fit: contain; }
+    .contact-links .contact-icon { color: var(--gold); font-size: 1.25rem; width: 22px; text-align: center; }
+    .contact-note { margin-top: 20px; color: var(--muted); font-size: .77rem; }
+    .contact-form { display: grid; gap: 14px; padding-top: 5px; }
+    .field { display: grid; gap: 7px; }
+    .field label { color: var(--muted); font-size: .72rem; }
+    .field input, .field textarea { width: 100%; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 13px 14px; outline: none; }
+    .field input:focus, .field textarea:focus { border-color: var(--cyan); }
+    .field textarea { min-height: 120px; resize: vertical; }
+    .form-status { display: none; color: var(--cyan); font-size: .8rem; }
+    footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: .75rem; }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; }
+
+    .modal-backdrop { display: none; position: fixed; inset: 0; z-index: 20; background: rgba(3, 8, 10, .8); backdrop-filter: blur(10px); padding: 20px; align-items: center; justify-content: center; }
+    .modal-backdrop.open { display: flex; }
+    .modal { width: min(620px, 100%); max-height: 90vh; overflow: auto; padding: 30px; background: #121619; border: 1px solid var(--cyan); border-radius: 14px; position: relative; box-shadow: 0 22px 80px rgba(0, 0, 0, .45); }
+    .modal h2 { margin: 7px 40px 6px 0; font-size: 1.8rem; }
+    .modal-sub { color: var(--muted); font-size: .82rem; margin-bottom: 22px; }
+    .close-modal { position: absolute; right: 20px; top: 19px; border: 0; background: transparent; color: var(--muted); font-size: 1.6rem; line-height: 1; }
+    .close-modal:hover { color: var(--text); }
+    .cards { display: grid; gap: 8px; }
+    .order-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+    .order-fields .field:last-child { grid-column: 1 / -1; }
+    .order-fields input, .order-fields textarea { width: 100%; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 11px 12px; outline: none; }
+    .order-fields textarea { min-height: 65px; resize: vertical; }
+    .order-fields input:focus, .order-fields textarea:focus { border-color: var(--cyan); }
+    .card-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 12px 14px; border: 1px solid var(--line); border-radius: 7px; }
+    .card-row.selected { border-color: var(--gold); background: rgba(242, 191, 102, .07); }
+    .card-row label { display: flex; gap: 10px; align-items: center; cursor: pointer; font-size: .78rem; }
+    .card-row input { accent-color: var(--gold); }
+    .card-owner { display: block; color: var(--gold); font-size: .7rem; margin-top: 2px; }
+    .card-number { display: block; color: var(--muted); font-size: .72rem; margin-top: 2px; letter-spacing: .04em; }
+    .copy-btn { border: 1px solid var(--line); color: var(--cyan); background: transparent; border-radius: 5px; padding: 7px 9px; font-size: .7rem; }
+    .copy-btn:hover { border-color: var(--cyan); }
+    .pay-btn { width: 100%; margin-top: 20px; }
+    .toast { position: fixed; z-index: 30; right: 20px; bottom: 20px; background: var(--gold); color: #15120c; border-radius: 6px; padding: 11px 15px; font-size: .8rem; font-weight: 700; transform: translateY(90px); transition: transform .25s; }
+    .toast.show { transform: translateY(0); }
+
+    @media (max-width: 800px) {
+      .wrap { width: min(var(--max), calc(100% - 32px)); }
+      .nav { height: 68px; }
+      .nav-cta { display: none; }
+      .menu-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 16px; right: 16px; padding: 15px; background: #0b1a20; border: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 0; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 8px; border-bottom: 1px solid var(--line); }
+      .hero { min-height: auto; padding: 130px 0 75px; }
+      .hero-grid, .about-grid, .security-grid, .contact-grid { grid-template-columns: 1fr; gap: 38px; }
+      .hero h1 { font-size: clamp(3rem, 17vw, 5.4rem); }
+      .hero-visual { min-height: 330px; }
+      .hero-image { height: 320px; }
+      section { padding: 78px 0; }
+      .section-head { display: block; margin-bottom: 30px; }
+      .section-head p { margin-top: 18px; }
+      .price-grid { grid-template-columns: 1fr 1fr; }
+      .price-card { min-height: 325px; }
+      .about-photo { height: 330px; }
+      .footer-row { display: block; }
+      .footer-row span { display: block; margin-top: 8px; }
+    }
+    @media (max-width: 430px) {
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .hero-actions a { text-align: center; }
+      .promise-list { grid-template-columns: 1fr; }
+      .modal { padding: 23px 17px; }
+      .card-row { grid-template-columns: 1fr; }
+      .copy-btn { width: max-content; }
+      .order-fields { grid-template-columns: 1fr; }
+      .order-fields .field:last-child { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="wrap nav">
+      <a class="logo" href="#home" aria-label="LUX MEDIA bosh sahifa"><img class="logo-image" src="Gemini_Generated_Image_o5z5yvo5z5yvo5z5.jpg" alt="LUX MEDIA logotipi">LUX MEDIA</a>
+      <nav class="nav-links" id="navLinks" aria-label="Asosiy navigatsiya">
+        <a href="#home">Bosh sahifa</a><a href="#about">Men haqimda</a><a href="#services">Xizmatlar & Narxlar</a><a href="#security">Kafolat & Xavfsizlik</a><a href="#contact">Aloqa</a>
+      </nav>
+      <a class="nav-cta" href="#contact">Loyiha boshlash</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menyuni ochish" aria-expanded="false">Menu</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Visual craft / Digital precision</div>
+          <h1>G'oyangizga<br><em>yorqinlik</em> beramiz.</h1>
+          <p class="hero-copy">LUX MEDIA - kamera, kod va kreativ fikr birlashadigan mustaqil studio. Brendingizni ko'rinadigan, esda qoladigan va ishlaydigan qilamiz.</p>
+          <div class="hero-actions"><a class="button-primary" href="#services">Xizmatlarni ko'rish</a><a class="button-secondary" href="#about">Studio haqida &rarr;</a></div>
+        </div>
+        <div class="hero-visual">
+          <img class="hero-image" src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&w=1000&q=85" alt="Professional kamera va studio jihozlari">
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about-grid">
+        <img class="about-photo" src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=85" alt="Kino ishlab chiqarish jarayoni">
+        <div class="about-copy"><div class="eyebrow">Men haqimda</div><h2>Texnika ortida<br>inson turadi.</h2><h3>Behruzbek Oribjonov</h3><p>Videograf, video montaj ustasi va IT-dasturchi. Men har bir loyihada estetikani texnik aniqlik bilan birlashtiraman: avval tinglayman, keyin kadr va kod orqali hikoya qilaman.</p><p>Canon Mark III bilan professional video va foto suratga olish, video grafika, HTML va Python dasturlash - bu mening asosiy ish qurollarim.</p>
+          <div class="skill-list"><div class="skill">Kamera / Foto & Video <span>CANON MARK III</span></div><div class="skill">Video grafika & Montaj <span>POST PRODUCTION</span></div><div class="skill">HTML / Python <span>DEVELOPMENT</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="wrap"><div class="section-head"><div><div class="eyebrow">Xizmatlar & Narxlar</div><h2>Sizning keyingi<br>loyihangiz.</h2></div><p>Har bir paket aniq vazifa, shaffof narx va natijaga yo'naltirilgan ish jarayoni uchun tuzilgan.</p></div>
+        <div class="price-grid">
+          <article class="price-card featured"><div class="eyebrow">01 / Visual</div><h3>Video va foto suratga olish</h3><div class="price">800 000 UZS <small>/ 1 kun</small></div><ul><li>Professional tasvirga olish</li><li>2 kunlik paket: 1 600 000 UZS</li><li>Montaj va rang korreksiyasi</li></ul><button class="order-btn" data-service="Video va foto suratga olish">Buyurtma berish &rarr;</button></article>
+          <article class="price-card"><div class="eyebrow">02 / Digital</div><h3>Veb-sayt va Telegram bot</h3><div class="price">$100 <small>dan boshlanadi</small></div><ul><li>Moslashuvchan veb-saytlar</li><li>Telegram bot avtomatizatsiyasi</li><li>Toza va tezkor kod</li></ul><button class="order-btn" data-service="Veb-sayt va Telegram bot">Buyurtma berish &rarr;</button></article>
+          <article class="price-card"><div class="eyebrow">03 / Identity</div><h3>Logotip va brending</h3><div class="price">$20 <small>dan boshlanadi</small></div><ul><li>Logo konsepsiyasi</li><li>Ranglar va tipografiya</li><li>Brend uchun tayyor fayllar</li></ul><button class="order-btn" data-service="Logotip va brending">Buyurtma berish &rarr;</button></article>
+          <article class="price-card"><div class="eyebrow">04 / Edit</div><h3>Montaj xizmati</h3><div class="price">200 000 so'm <small>dan</small></div><ul><li>Dinamik video montaj</li><li>Rang va ovoz ishlovi</li><li>Formatga mos eksport</li></ul><button class="order-btn" data-service="Montaj xizmati">Buyurtma berish &rarr;</button></article>
+          <article class="price-card"><div class="eyebrow">05 / Short form</div><h3>Qisqa videolar tayyorlash</h3><div class="price">50 000 so'm <small>dan</small></div><ul><li>Reels, Shorts va TikTok</li><li>Tezkor ritm va subtitr</li><li>Ijtimoiy tarmoqqa tayyor</li></ul><button class="order-btn" data-service="Qisqa videolar tayyorlash">Buyurtma berish &rarr;</button></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="security"><div class="wrap security-grid"><div><div class="eyebrow">Kafolat & Xavfsizlik</div><h2>Kelishuv aniq.<br>Natija ishonchli.</h2><p>LUX MEDIA bilan ishlash jarayoni ochiq va tartibli. Vaqt, sifat va aloqa bo'yicha kelishilgan mas'uliyat loyiha yakunigacha saqlanadi.</p></div><div class="promise-list"><div class="promise"><b>01 / Sifat kafolati</b><p>Har bir material topshirishdan oldin texnik va vizual tekshiruvdan o'tadi.</p></div><div class="promise"><b>02 / Muddat nazorati</b><p>Vazifalar bosqichma-bosqich rejalashtiriladi va kelishilgan vaqtda topshiriladi.</p></div><div class="promise"><b>03 / Shaffof aloqa</b><p>Jarayon davomida status, fikr va o'zgarishlar uchun doimiy aloqa mavjud.</p></div><div class="promise"><b>04 / Ma'lumot xavfsizligi</b><p>Mijoz fayllari va loyiha tafsilotlari mas'uliyat bilan himoyalanadi.</p></div></div></div></section>
+
+    <section class="contact" id="contact"><div class="wrap contact-grid"><div><div class="eyebrow">Aloqa</div><h2>Birga<br>yaratamiz.</h2><p class="contact-intro">Loyihangizni qisqacha yozib qoldiring. Men siz bilan bog'lanib, keyingi qadamlarni belgilayman.</p><div class="contact-links"><a href="tel:+998947931114">Telefon &nbsp; 94 793 11 14 &nearr;</a><a href="https://t.me/behruzbek_0875" target="_blank" rel="noopener">Telegram &nbsp; @behruzbek_0875 &nearr;</a><a href="https://instagram.com/behruzbek.ac" target="_blank" rel="noopener">Instagram &nbsp; @behruzbek.ac &nearr;</a><a href="mailto:behruzbek.ac@gmail.com">Email &nbsp; behruzbek.ac@gmail.com &nearr;</a></div></div><form class="contact-form" id="contactForm"><div class="field"><label for="name">ISMINGIZ</label><input id="name" required placeholder="Behruzbek" autocomplete="name"></div><div class="field"><label for="email">EMAIL</label><input id="email" type="email" required placeholder="siz@email.com" autocomplete="email"></div><div class="field"><label for="message">LOYIHA HAQIDA</label><textarea id="message" required placeholder="Qanday loyiha ustida ishlaymiz?"></textarea></div><button class="button-primary" type="submit">Xabar yuborish &rarr;</button><div class="form-status" id="formStatus">Xabaringiz tayyor. Telegram orqali yuborish uchun havola ochildi.</div></form></div></section>
+  </main>
+
+  <footer><div class="wrap footer-row"><strong class="logo"><img class="logo-image" src="Gemini_Generated_Image_o5z5yvo5z5yvo5z5.jpg" alt="">LUX MEDIA</strong><span>&copy; 2026 Behruzbek Oribjonov. Barcha huquqlar himoyalangan.</span></div></footer>
+
+  <div class="modal-backdrop" id="paymentModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><button class="close-modal" id="closeModal" aria-label="Modalni yopish">&times;</button><div class="eyebrow">Secure checkout</div><h2 id="modalTitle">To'lov usulini tanlang</h2><p class="modal-sub">Xizmat: <strong id="selectedService">-</strong>. Kerakli karta raqamini nusxalab, to'lovni amalga oshiring.</p><div class="cards" id="cards"></div><button class="button-primary pay-btn" id="paidButton">To'lov qildim &rarr;</button></div></div>
+  <div class="toast" id="toast">Karta raqami nusxalandi</div>
+
+  <script>
+    const cardData = [
+      ['Humo', '9860126602603964'], ['Visa', '4023060217534428'], ['Uzcard', '6262570004487718']
+    ];
+    const modal = document.getElementById('paymentModal');
+    const cards = document.getElementById('cards');
+    const serviceLabel = document.getElementById('selectedService');
+    let activeService = '';
+    const contactLinks = document.querySelector('.contact-links');
+    const emailLink = contactLinks.querySelector('a[href^="mailto:"]');
+    emailLink.href = 'mailto:bbehruzbek05@gail.com';
+    emailLink.innerHTML = '<span class="contact-icon">&#9993;</span><span>Gmail<br><b>bbehruzbek05@gail.com</b></span>';
+    const phoneLink = contactLinks.querySelector('a[href^="tel:"]');
+    phoneLink.innerHTML = '<span class="contact-icon">&#9742;</span><span>Telefon<br><b>+998 94 793 11 14</b></span>';
+    const socialLinks = contactLinks.querySelectorAll('a[href*="t.me"], a[href*="instagram.com"]');
+    socialLinks.forEach(link => {
+      const isTelegram = link.href.includes('t.me');
+      link.innerHTML = `<img src="https://cdn.simpleicons.org/${isTelegram ? 'telegram' : 'instagram'}/63e6d2" alt="${isTelegram ? 'Telegram' : 'Instagram'} logotipi"><span>${isTelegram ? 'Telegram<br><b>@behruzbek_0875</b>' : 'Instagram<br><b>@behruzbek.ac</b>'}</span>`;
+    });
+    const serviceNote = document.createElement('p');
+    serviceNote.className = 'contact-note';
+    serviceNote.textContent = 'Montaj 10 kundan 30 kungacha davom etadi. Vaziyatga qarab montaj kunlari o\'zgarishi mumkin. Albom xizmatlari razmeriga qarab alohida narxlanadi, albom olish xizmati ham alohida hisoblanadi. Saytimizni biz tayyorlaganimizda chegirma mavjud. Saytdagi barcha ma\'lumotlar 100% himoyalangan.';
+    contactLinks.after(serviceNote);
+    const orderFields = document.createElement('div');
+    orderFields.className = 'order-fields';
+    orderFields.innerHTML = '<div class="field"><label for="orderName">ISMINGIZ</label><input id="orderName" placeholder="Ismingiz"></div><div class="field"><label for="orderPhone">TELEFON</label><input id="orderPhone" placeholder="+998 90 000 00 00"></div><div class="field"><label for="orderMessage">QISQA XABAR</label><textarea id="orderMessage" placeholder="Buyurtmangiz haqida qisqacha yozing"></textarea></div>';
+    cards.before(orderFields);
+    cardData.forEach(([name, number], index) => {
+      const row = document.createElement('div'); row.className = 'card-row' + (index === 0 ? ' selected' : '');
+      row.innerHTML = `<label><input type="radio" name="payment-card" value="${name}" ${index === 0 ? 'checked' : ''}><span><b>${name}</b><span class="card-owner">Behruzbek O.</span><span class="card-number">${number}</span></span></label><button class="copy-btn" data-number="${number}">Nusxalash</button>`;
+      cards.appendChild(row);
+    });
+    document.querySelectorAll('.order-btn').forEach(button => button.addEventListener('click', () => { activeService = button.dataset.service; serviceLabel.textContent = activeService; document.getElementById('orderName').value = ''; document.getElementById('orderPhone').value = ''; document.getElementById('orderMessage').value = ''; document.querySelector('.card-row input').checked = true; document.querySelectorAll('.card-row').forEach((row, index) => row.classList.toggle('selected', index === 0)); modal.classList.add('open'); document.body.style.overflow = 'hidden'; }));
+    function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; }
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+    modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') closeModal(); });
+    cards.addEventListener('change', event => { if (event.target.name === 'payment-card') { document.querySelectorAll('.card-row').forEach(row => row.classList.remove('selected')); event.target.closest('.card-row').classList.add('selected'); } });
+    const toast = document.getElementById('toast');
+    cards.addEventListener('click', event => { if (!event.target.classList.contains('copy-btn')) return; const number = event.target.dataset.number; const showToast = () => { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1800); }; if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(number).then(showToast).catch(() => fallbackCopy(number)); } else { fallbackCopy(number); } function fallbackCopy(value) { const input = document.createElement('input'); input.value = value; document.body.appendChild(input); input.select(); document.execCommand('copy'); input.remove(); showToast(); } });
+    document.getElementById('paidButton').addEventListener('click', () => { const name = document.getElementById('orderName').value || 'Mijoz'; const phone = document.getElementById('orderPhone').value || 'Telefon ko\'rsatilmagan'; const note = document.getElementById('orderMessage').value || 'Qo\'shimcha izoh yo\'q'; const text = `Salom! Men LUX MEDIA sayti orqali ${activeService} xizmati uchun to'lov qildim. Buyurtmamni tasdiqlab, belgilab qo'ying.\nIsm: ${name}\nTelefon: ${phone}\nXabar: ${note}`; window.open(`https://t.me/behruzbek_0875?text=${encodeURIComponent(text)}`, '_blank'); });
+    const menuToggle = document.getElementById('menuToggle'); const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => { const open = navLinks.classList.toggle('open'); menuToggle.setAttribute('aria-expanded', open); });
+    navLinks.addEventListener('click', event => { if (event.target.tagName === 'A') navLinks.classList.remove('open'); });
+    window.addEventListener('scroll', () => document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20));
+    document.getElementById('contactForm').addEventListener('submit', event => { event.preventDefault(); const name = document.getElementById('name').value; const message = `Salom! Men ${name}. ${document.getElementById('message').value}`; window.open(`https://t.me/behruzbek_0875?text=${encodeURIComponent(message)}`, '_blank'); document.getElementById('formStatus').style.display = 'block'; event.target.reset(); });
+  </script>
+</body>
+</html>
