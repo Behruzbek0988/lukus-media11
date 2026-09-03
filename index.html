@@ -102,6 +102,15 @@
     .price-card li::before { content: '—'; position: absolute; left: 0; color: var(--cyan); }
     .order-btn { margin-top: auto; border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 12px; border-radius: 7px; font-weight: 700; font-size: .8rem; }
     .order-btn:hover { background: var(--gold); color: #15120c; }
+    .discount-section { background: radial-gradient(circle at 82% 35%, rgba(255, 131, 95, .12), transparent 30%), #101214; border-top: 1px solid var(--line); }
+    .discount-grid { display: grid; grid-template-columns: 1fr .9fr; gap: 60px; align-items: center; }
+    .discount-grid h2 { font-size: clamp(2.2rem, 5vw, 4.5rem); line-height: .95; margin: 12px 0 22px; }
+    .discount-copy { color: var(--muted); max-width: 480px; }
+    .drum { min-height: 300px; padding: 28px; border: 1px solid var(--gold); border-radius: var(--radius); background: linear-gradient(145deg, rgba(242, 191, 102, .12), rgba(99, 230, 210, .06)); text-align: center; display: grid; place-items: center; }
+    .drum-result { color: var(--gold); font-family: 'Space Grotesk', sans-serif; font-size: clamp(4rem, 10vw, 7rem); font-weight: 700; line-height: 1; }
+    .drum-result.spin { animation: drumSpin .55s ease-in-out; }
+    .drum-note { color: var(--muted); font-size: .76rem; margin: 12px 0 20px; }
+    @keyframes drumSpin { 50% { transform: rotateX(75deg) scale(.85); opacity: .35; } }
 
     .security-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; }
     .security-grid h2 { font-size: clamp(2.1rem, 4vw, 3.8rem); line-height: 1; letter-spacing: -.04em; margin: 12px 0 25px; }
@@ -110,6 +119,21 @@
     .promise { padding: 25px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
     .promise b { display: block; color: var(--gold); font-family: 'Space Grotesk'; font-size: 1.05rem; margin-bottom: 8px; }
     .promise p { margin: 0; color: var(--muted); font-size: .78rem; }
+    .policy-section { background: #0b1011; border-top: 1px solid var(--line); }
+    .policy-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; }
+    .policy-grid h2 { font-size: clamp(2.1rem, 4vw, 3.8rem); line-height: 1; letter-spacing: -.04em; margin: 12px 0 25px; }
+    .policy-intro { color: var(--muted); max-width: 390px; }
+    .policy-list { display: grid; gap: 12px; }
+    .policy-item { padding: 22px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+    .policy-item h3 { color: var(--gold); font-size: 1rem; margin: 0 0 8px; }
+    .policy-item p { color: var(--muted); font-size: .82rem; margin: 0; }
+
+    .testimonials { background: #0b1011; border-top: 1px solid var(--line); }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .testimonial { padding: 25px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+    .testimonial-rating { color: var(--gold); letter-spacing: .12em; font-size: .82rem; margin-bottom: 18px; }
+    .testimonial blockquote { margin: 0 0 22px; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; line-height: 1.4; }
+    .testimonial cite { color: var(--muted); font-size: .78rem; font-style: normal; }
 
     .contact { border-top: 1px solid var(--line); }
     .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; }
@@ -121,6 +145,8 @@
     .contact-links img { width: 22px; height: 22px; object-fit: contain; }
     .contact-links .contact-icon { color: var(--gold); font-size: 1.25rem; width: 22px; text-align: center; }
     .contact-note { margin-top: 20px; color: var(--muted); font-size: .77rem; }
+    .calendar-section { background: linear-gradient(180deg, #111416, #090a0b); border-top: 1px solid var(--line); }
+    .calendar-frame { width: 100%; height: 600px; border: 1px solid var(--line); background: var(--panel); }
     .contact-form { display: grid; gap: 14px; padding-top: 5px; }
     .field { display: grid; gap: 7px; }
     .field label { color: var(--muted); font-size: .72rem; }
@@ -142,8 +168,13 @@
     .order-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
     .order-fields .field:last-child { grid-column: 1 / -1; }
     .order-fields input, .order-fields textarea { width: 100%; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 11px 12px; outline: none; }
+    .order-fields select { width: 100%; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 11px 12px; outline: none; appearance: auto; }
     .order-fields textarea { min-height: 65px; resize: vertical; }
-    .order-fields input:focus, .order-fields textarea:focus { border-color: var(--cyan); }
+    .order-fields input:focus, .order-fields select:focus, .order-fields textarea:focus { border-color: var(--cyan); }
+    .calendar-sync { grid-column: 1 / -1; display: grid; gap: 8px; margin: 2px 0 4px; }
+    .calendar-sync a { display: none; width: max-content; color: var(--cyan); border-bottom: 1px solid var(--cyan); font-size: .78rem; }
+    .calendar-sync a.ready { display: inline-block; }
+    .calendar-sync small { color: var(--muted); font-size: .7rem; }
     .card-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 12px 14px; border: 1px solid var(--line); border-radius: 7px; }
     .card-row.selected { border-color: var(--gold); background: rgba(242, 191, 102, .07); }
     .card-row label { display: flex; gap: 10px; align-items: center; cursor: pointer; font-size: .78rem; }
@@ -165,7 +196,7 @@
       .nav-links.open { display: flex; }
       .nav-links a { padding: 12px 8px; border-bottom: 1px solid var(--line); }
       .hero { min-height: auto; padding: 130px 0 75px; }
-      .hero-grid, .about-grid, .security-grid, .contact-grid { grid-template-columns: 1fr; gap: 38px; }
+      .hero-grid, .about-grid, .security-grid, .contact-grid, .discount-grid, .policy-grid { grid-template-columns: 1fr; gap: 38px; }
       .hero h1 { font-size: clamp(3rem, 17vw, 5.4rem); }
       .hero-visual { min-height: 330px; }
       .hero-image { height: 320px; }
@@ -174,7 +205,9 @@
       .section-head p { margin-top: 18px; }
       .price-grid { grid-template-columns: 1fr 1fr; }
       .price-card { min-height: 325px; }
+      .testimonial-grid { grid-template-columns: 1fr; }
       .about-photo { height: 330px; }
+      .calendar-frame { height: 520px; }
       .footer-row { display: block; }
       .footer-row span { display: block; margin-top: 8px; }
     }
@@ -195,7 +228,7 @@
     <div class="wrap nav">
       <a class="logo" href="#home" aria-label="LUX MEDIA bosh sahifa"><img class="logo-image" src="Gemini_Generated_Image_o5z5yvo5z5yvo5z5.jpg" alt="LUX MEDIA logotipi">LUX MEDIA</a>
       <nav class="nav-links" id="navLinks" aria-label="Asosiy navigatsiya">
-        <a href="#home">Bosh sahifa</a><a href="#about">Men haqimda</a><a href="#services">Xizmatlar & Narxlar</a><a href="#security">Kafolat & Xavfsizlik</a><a href="#contact">Aloqa</a>
+        <a href="#home">Bosh sahifa</a><a href="#about">Biz haqimizda</a><a href="#services">Xizmatlar & Narxlar</a><a href="#discount">Chegirma</a><a href="#security">Kafolat & Xavfsizlik</a><a href="#privacy">Maxfiylik</a><a href="#contact">Aloqa</a>
       </nav>
       <a class="nav-cta" href="#contact">Loyiha boshlash</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Menyuni ochish" aria-expanded="false">Menu</button>
@@ -220,7 +253,7 @@
     <section id="about">
       <div class="wrap about-grid">
         <img class="about-photo" src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=85" alt="Kino ishlab chiqarish jarayoni">
-        <div class="about-copy"><div class="eyebrow">Men haqimda</div><h2>Texnika ortida<br>inson turadi.</h2><h3>Behruzbek Oribjonov</h3><p>Videograf, video montaj ustasi va IT-dasturchi. Men har bir loyihada estetikani texnik aniqlik bilan birlashtiraman: avval tinglayman, keyin kadr va kod orqali hikoya qilaman.</p><p>Canon Mark III bilan professional video va foto suratga olish, video grafika, HTML va Python dasturlash - bu mening asosiy ish qurollarim.</p>
+        <div class="about-copy"><div class="eyebrow">Biz haqimizda</div><h2>Ikki kishi.<br>Yigirma yil tajriba.</h2><h3>Ustoz va shogird jamoasi</h3><p>Bizning jamoa ikki kishidan iborat: biri ustoz, biri shogird. Qaysi biri qaysi ekanini loyiha davomida o'zingiz topasiz, lekin ikkalasi ham kamerani to'g'ri tomonga qaratishni yaxshi biladi.</p><p>O'z studiyamiz, 20 yillik tajribamiz va har bir kadrga jiddiy qaraydigan kayfiyatimiz bor. Natija esa shunchaki video emas, qayta-qayta ko'rgizadigan xotira bo'ladi.</p>
           <div class="skill-list"><div class="skill">Kamera / Foto & Video <span>CANON MARK III</span></div><div class="skill">Video grafika & Montaj <span>POST PRODUCTION</span></div><div class="skill">HTML / Python <span>DEVELOPMENT</span></div></div>
         </div>
       </div>
@@ -234,11 +267,26 @@
           <article class="price-card"><div class="eyebrow">03 / Identity</div><h3>Logotip va brending</h3><div class="price">$20 <small>dan boshlanadi</small></div><ul><li>Logo konsepsiyasi</li><li>Ranglar va tipografiya</li><li>Brend uchun tayyor fayllar</li></ul><button class="order-btn" data-service="Logotip va brending">Buyurtma berish &rarr;</button></article>
           <article class="price-card"><div class="eyebrow">04 / Edit</div><h3>Montaj xizmati</h3><div class="price">200 000 so'm <small>dan</small></div><ul><li>Dinamik video montaj</li><li>Rang va ovoz ishlovi</li><li>Formatga mos eksport</li></ul><button class="order-btn" data-service="Montaj xizmati">Buyurtma berish &rarr;</button></article>
           <article class="price-card"><div class="eyebrow">05 / Short form</div><h3>Qisqa videolar tayyorlash</h3><div class="price">50 000 so'm <small>dan</small></div><ul><li>Reels, Shorts va TikTok</li><li>Tezkor ritm va subtitr</li><li>Ijtimoiy tarmoqqa tayyor</li></ul><button class="order-btn" data-service="Qisqa videolar tayyorlash">Buyurtma berish &rarr;</button></article>
+          <article class="price-card"><div class="eyebrow">06 / Ceremony</div><h3>Qisqa marosimlar</h3><div class="price">250 000 so'm <small>/ 1 soatdan</small></div><ul><li>Ko'proq soat uchun narx kelishiladi</li><li>To'lov: 3 ta karta orqali</li><li>Buyurtma Telegram orqali</li></ul><button class="order-btn" data-service="Qisqa marosimlar">Buyurtma berish &rarr;</button></article>
+          <article class="price-card"><div class="eyebrow">07 / Story</div><h3>To'y montaji va albom</h3><div class="price">$100 <small>albom boshlang'ich narxi</small></div><ul><li>To'y montaji: 10 kundan 30 kungacha</li><li>Albom hajmi va qoplamasi tanlanadi</li><li>Tez va sifatli post-production</li></ul><button class="order-btn" data-service="To'y montaji va albom">Buyurtma berish &rarr;</button></article>
+          <article class="price-card"><div class="eyebrow">08 / Lab</div><h3>Laboratoriya xizmati</h3><div class="price">Kelishiladi</div><ul><li>Foto materiallarni tayyorlash</li><li>Chop etish va albomga moslash</li><li>Hajm va qoplamaga qarab</li></ul><button class="order-btn" data-service="Laboratoriya xizmati">Buyurtma berish &rarr;</button></article>
+          <article class="price-card"><div class="eyebrow">09 / IT</div><h3>IT xizmatlari</h3><div class="price">Kelishiladi</div><ul><li>Telegram botlar</li><li>Qisqa saytlar</li><li>Logotip dizayni, to'lov 2 karta</li></ul><button class="order-btn" data-service="IT xizmatlari">Buyurtma berish &rarr;</button></article>
+          <article class="price-card"><div class="eyebrow">10 / Package</div><h3>Bronza tarif</h3><div class="price">Kelishiladi</div><ul><li>Qisqa va ixcham syomka</li><li>Asosiy montaj ishlari</li><li>Laboratoriya xizmati alohida</li></ul><button class="order-btn" data-service="Bronza tarif">Buyurtma berish &rarr;</button></article>
+          <article class="price-card"><div class="eyebrow">11 / Package</div><h3>Kumush tarif</h3><div class="price">Kelishiladi</div><ul><li>Kengroq syomka paketi</li><li>Sifatli montaj va rang ishlovi</li><li>Albom hajmi va qoplamasi tanlanadi</li></ul><button class="order-btn" data-service="Kumush tarif">Buyurtma berish &rarr;</button></article>
+          <article class="price-card featured"><div class="eyebrow">12 / Package</div><h3>Oltin tarif</h3><div class="price">Kelishiladi</div><ul><li>To'liq video va foto xizmatlari</li><li>Ustuvor post-production</li><li>Laboratoriya va albom yechimlari</li></ul><button class="order-btn" data-service="Oltin tarif">Buyurtma berish &rarr;</button></article>
         </div>
       </div>
     </section>
 
+    <section class="discount-section" id="discount"><div class="wrap discount-grid"><div><div class="eyebrow">Maxsus imkoniyat</div><h2>Chegirma<br>Barabani.</h2><p class="discount-copy">Tugmani bosing va bugungi tasodifiy chegirmangizni bilib oling. 75% chegirma juda kam uchraydi, 50% esa o'rtacha darajada omad talab qiladi.</p></div><div class="drum"><div><div class="drum-result" id="discountResult">?</div><p class="drum-note" id="discountNote">Omadingizni sinab ko'ring.</p><button class="button-primary" id="discountButton" type="button">Barabanni aylantirish &rarr;</button></div></div></div></section>
+
+    <section class="testimonials" id="testimonials"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Mijozlar fikri</div><h2>Birga ishlash<br>natijalari.</h2></div><p>LUX MEDIA xizmatlaridan foydalangan mijozlarning samimiy fikrlari.</p></div><div class="testimonial-grid"><article class="testimonial"><div class="testimonial-rating" aria-label="5 yulduz">*****</div><blockquote>"Video va montajdagi yondashuv juda professional bo'ldi. Natija kutganimizdan ham chiroyli chiqdi."</blockquote><cite>Madina R. / Brend egasi</cite></article><article class="testimonial"><div class="testimonial-rating" aria-label="5 yulduz">*****</div><blockquote>"Saytimiz tez, qulay va aynan biz xohlagandek ishlaydi. Jarayon davomida aloqa ham a'lo bo'ldi."</blockquote><cite>Azizbek T. / Tadbirkor</cite></article><article class="testimonial"><div class="testimonial-rating" aria-label="5 yulduz">*****</div><blockquote>"Qisqa videolarimiz ijtimoiy tarmoqlarda ancha yaxshi natija bera boshladi. Kreativlik va tezlik uchun rahmat."</blockquote><cite>Sevinch K. / Kontent yaratuvchi</cite></article></div></div></section>
+
     <section id="security"><div class="wrap security-grid"><div><div class="eyebrow">Kafolat & Xavfsizlik</div><h2>Kelishuv aniq.<br>Natija ishonchli.</h2><p>LUX MEDIA bilan ishlash jarayoni ochiq va tartibli. Vaqt, sifat va aloqa bo'yicha kelishilgan mas'uliyat loyiha yakunigacha saqlanadi.</p></div><div class="promise-list"><div class="promise"><b>01 / Sifat kafolati</b><p>Har bir material topshirishdan oldin texnik va vizual tekshiruvdan o'tadi.</p></div><div class="promise"><b>02 / Muddat nazorati</b><p>Vazifalar bosqichma-bosqich rejalashtiriladi va kelishilgan vaqtda topshiriladi.</p></div><div class="promise"><b>03 / Shaffof aloqa</b><p>Jarayon davomida status, fikr va o'zgarishlar uchun doimiy aloqa mavjud.</p></div><div class="promise"><b>04 / Ma'lumot xavfsizligi</b><p>Mijoz fayllari va loyiha tafsilotlari mas'uliyat bilan himoyalanadi.</p></div></div></div></section>
+
+    <section class="policy-section" id="privacy"><div class="wrap policy-grid"><div><div class="eyebrow">Maxfiylik siyosati & To'lovlar</div><h2>Ishonchingiz<br>biz uchun muhim.</h2><p class="policy-intro">Buyurtma berish orqali ushbu maxfiylik siyosati va to'lov shartlarini o'qib, qabul qilgan hisoblanasiz.</p></div><div class="policy-list"><article class="policy-item"><h3>01 / Ma'lumotlar maxfiyligi</h3><p>Ism, telefon, loyiha fayllari va yozishmalaringiz sir saqlanadi. Ular reklama yoki boshqa maqsadlarda sotilmaydi va sizning roziligingizsiz uchinchi shaxslarga oshkor qilinmaydi.</p></article><article class="policy-item"><h3>02 / Qonuniy istisno</h3><p>Ma'lumotlarni himoya qilishga jiddiy amal qilamiz. Shu bilan birga, sud qarori yoki amaldagi qonun talab qilgan holatlarda vakolatli davlat organlariga taqdim etish majburiyati bo'lishi mumkin.</p></article><article class="policy-item"><h3>03 / To'lovlar qaytarilmaydi</h3><p>To'lov amalga oshirilgandan so'ng, hech qanday vaziyatda qaytarib berilmaydi. Buyurtma, xizmat hajmi va muddat to'lovdan oldin mijoz bilan kelishib olinadi.</p></article><article class="policy-item"><h3>04 / Tasdiqlash</h3><p>To'lovni amalga oshirish orqali mijoz ushbu shartlarni tushunganini va qabul qilganini tasdiqlaydi. Savollar bo'lsa, to'lovdan oldin Telegram orqali murojaat qiling.</p></article></div></div></section>
+
+    <section class="calendar-section" id="calendar"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Google Calendar</div><h2>Bo'sh vaqtni<br>tanlang.</h2></div><p>Buyurtma sanasini ko'ring va tanlangan vaqtni Google Calendar'ga saqlang.</p></div><iframe class="calendar-frame" src="https://calendar.google.com/calendar/embed?src=bbehruzbek05%40gmail.com&amp;ctz=Asia%2FSamarkand" frameborder="0" scrolling="no" title="LUX MEDIA Google Calendar"></iframe></div></section>
 
     <section class="contact" id="contact"><div class="wrap contact-grid"><div><div class="eyebrow">Aloqa</div><h2>Birga<br>yaratamiz.</h2><p class="contact-intro">Loyihangizni qisqacha yozib qoldiring. Men siz bilan bog'lanib, keyingi qadamlarni belgilayman.</p><div class="contact-links"><a href="tel:+998947931114">Telefon &nbsp; 94 793 11 14 &nearr;</a><a href="https://t.me/behruzbek_0875" target="_blank" rel="noopener">Telegram &nbsp; @behruzbek_0875 &nearr;</a><a href="https://instagram.com/behruzbek.ac" target="_blank" rel="noopener">Instagram &nbsp; @behruzbek.ac &nearr;</a><a href="mailto:behruzbek.ac@gmail.com">Email &nbsp; behruzbek.ac@gmail.com &nearr;</a></div></div><form class="contact-form" id="contactForm"><div class="field"><label for="name">ISMINGIZ</label><input id="name" required placeholder="Behruzbek" autocomplete="name"></div><div class="field"><label for="email">EMAIL</label><input id="email" type="email" required placeholder="siz@email.com" autocomplete="email"></div><div class="field"><label for="message">LOYIHA HAQIDA</label><textarea id="message" required placeholder="Qanday loyiha ustida ishlaymiz?"></textarea></div><button class="button-primary" type="submit">Xabar yuborish &rarr;</button><div class="form-status" id="formStatus">Xabaringiz tayyor. Telegram orqali yuborish uchun havola ochildi.</div></form></div></section>
   </main>
@@ -249,6 +297,29 @@
   <div class="toast" id="toast">Karta raqami nusxalandi</div>
 
   <script>
+    const discountButton = document.getElementById('discountButton');
+    const discountResult = document.getElementById('discountResult');
+    const discountNote = document.getElementById('discountNote');
+    const discountWeights = [[5, 30], [10, 25], [15, 20], [25, 12], [40, 4], [50, 8], [75, 1]];
+    const pickDiscount = () => { let roll = Math.random() * 100; for (const [discount, weight] of discountWeights) { roll -= weight; if (roll < 0) return discount; } return 5; };
+    discountButton.addEventListener('click', () => {
+      discountButton.disabled = true;
+      discountResult.classList.remove('spin');
+      void discountResult.offsetWidth;
+      discountResult.classList.add('spin');
+      let frame = 0;
+      const rolling = setInterval(() => {
+        discountResult.textContent = `${pickDiscount()}%`;
+        frame += 1;
+        if (frame >= 8) {
+          clearInterval(rolling);
+          const result = pickDiscount();
+          discountResult.textContent = `${result}%`;
+          discountNote.textContent = result === 75 ? 'Ajoyib omad! Bu juda kam uchraydi.' : result === 50 ? "Zo'r natija! O'rtacha darajadagi omad." : 'Chegirmangiz tayyor. Buyurtma berishga shoshiling!';
+          discountButton.disabled = false;
+        }
+      }, 75);
+    });
     const cardData = [
       ['Humo', '9860126602603964'], ['Visa', '4023060217534428'], ['Uzcard', '6262570004487718']
     ];
@@ -273,14 +344,18 @@
     contactLinks.after(serviceNote);
     const orderFields = document.createElement('div');
     orderFields.className = 'order-fields';
-    orderFields.innerHTML = '<div class="field"><label for="orderName">ISMINGIZ</label><input id="orderName" placeholder="Ismingiz"></div><div class="field"><label for="orderPhone">TELEFON</label><input id="orderPhone" placeholder="+998 90 000 00 00"></div><div class="field"><label for="orderMessage">QISQA XABAR</label><textarea id="orderMessage" placeholder="Buyurtmangiz haqida qisqacha yozing"></textarea></div>';
+    orderFields.innerHTML = '<div class="field"><label for="orderName">ISMINGIZ</label><input id="orderName" placeholder="Ismingiz"></div><div class="field"><label for="orderPhone">TELEFON</label><input id="orderPhone" placeholder="+998 90 000 00 00"></div><div class="field"><label for="orderMonth">OY</label><select id="orderMonth"><option value="">Oyni tanlang</option><option>Yanvar</option><option>Fevral</option><option>Mart</option><option>Aprel</option><option>May</option><option>Iyun</option><option>Iyul</option><option>Avgust</option><option>Sentabr</option><option>Oktabr</option><option>Noyabr</option><option>Dekabr</option></select></div><div class="field"><label for="orderDay">KUN</label><select id="orderDay"><option value="">Kunni tanlang</option>' + Array.from({ length: 31 }, (_, index) => `<option>${index + 1}-kun</option>`).join('') + '</select></div><div class="field"><label for="orderTime">SOAT</label><select id="orderTime"><option value="">Vaqtni tanlang</option><option>09:00 - 11:00</option><option>11:00 - 13:00</option><option>14:00 - 16:00</option><option>16:00 - 18:00</option><option>18:00 - 20:00</option></select></div><div class="field"><label for="orderMessage">MIJOZ FIKRI / QISQA XABAR</label><textarea id="orderMessage" placeholder="Buyurtmangiz yoki istagingiz haqida yozing"></textarea></div><div class="calendar-sync"><small id="calendarStatus">Oy, kun va soatni tanlang.</small><a id="calendarLink" href="#" target="_blank" rel="noopener">Google Calendar\'ga qo\'shish &rarr;</a></div>';
     cards.before(orderFields);
+    const monthNumbers = { Yanvar: 0, Fevral: 1, Mart: 2, Aprel: 3, May: 4, Iyun: 5, Iyul: 6, Avgust: 7, Sentabr: 8, Oktabr: 9, Noyabr: 10, Dekabr: 11 };
+    let lastCalendarUrl = '';
+    const updateCalendarLink = () => { const month = document.getElementById('orderMonth').value; const day = document.getElementById('orderDay').value; const time = document.getElementById('orderTime').value; const link = document.getElementById('calendarLink'); const status = document.getElementById('calendarStatus'); if (!month || !day || !time) { link.classList.remove('ready'); status.textContent = 'Oy, kun va soatni tanlang.'; return; } const [startHour, endHour] = time.split(' - ').map(value => value.split(':')[0]); const year = new Date().getFullYear(); const start = new Date(year, monthNumbers[month], parseInt(day, 10), Number(startHour)); const end = new Date(year, monthNumbers[month], parseInt(day, 10), Number(endHour)); const formatDate = date => `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}T${String(date.getHours()).padStart(2, '0')}${String(date.getMinutes()).padStart(2, '0')}00`; const title = `${activeService} - LUX MEDIA`; link.href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${formatDate(start)}/${formatDate(end)}&details=${encodeURIComponent('LUX MEDIA buyurtmasi')}&ctz=Asia%2FSamarkand`; link.classList.add('ready'); status.textContent = 'Vaqt tanlandi. Google Calendar oynasi tayyor.'; if (lastCalendarUrl !== link.href) { lastCalendarUrl = link.href; window.open(link.href, '_blank'); } };
+    orderFields.addEventListener('change', event => { if (event.target.matches('select')) updateCalendarLink(); });
     cardData.forEach(([name, number], index) => {
       const row = document.createElement('div'); row.className = 'card-row' + (index === 0 ? ' selected' : '');
       row.innerHTML = `<label><input type="radio" name="payment-card" value="${name}" ${index === 0 ? 'checked' : ''}><span><b>${name}</b><span class="card-owner">Behruzbek O.</span><span class="card-number">${number}</span></span></label><button class="copy-btn" data-number="${number}">Nusxalash</button>`;
       cards.appendChild(row);
     });
-    document.querySelectorAll('.order-btn').forEach(button => button.addEventListener('click', () => { activeService = button.dataset.service; serviceLabel.textContent = activeService; document.getElementById('orderName').value = ''; document.getElementById('orderPhone').value = ''; document.getElementById('orderMessage').value = ''; document.querySelector('.card-row input').checked = true; document.querySelectorAll('.card-row').forEach((row, index) => row.classList.toggle('selected', index === 0)); modal.classList.add('open'); document.body.style.overflow = 'hidden'; }));
+    document.querySelectorAll('.order-btn').forEach(button => button.addEventListener('click', () => { activeService = button.dataset.service; serviceLabel.textContent = activeService; document.getElementById('orderName').value = ''; document.getElementById('orderPhone').value = ''; document.getElementById('orderMonth').value = ''; document.getElementById('orderDay').value = ''; document.getElementById('orderTime').value = ''; document.getElementById('orderMessage').value = ''; document.getElementById('calendarLink').classList.remove('ready'); document.getElementById('calendarStatus').textContent = 'Oy, kun va soatni tanlang.'; lastCalendarUrl = ''; document.querySelector('.card-row input').checked = true; document.querySelectorAll('.card-row').forEach((row, index) => row.classList.toggle('selected', index === 0)); modal.classList.add('open'); document.body.style.overflow = 'hidden'; }));
     function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; }
     document.getElementById('closeModal').addEventListener('click', closeModal);
     modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
@@ -288,7 +363,7 @@
     cards.addEventListener('change', event => { if (event.target.name === 'payment-card') { document.querySelectorAll('.card-row').forEach(row => row.classList.remove('selected')); event.target.closest('.card-row').classList.add('selected'); } });
     const toast = document.getElementById('toast');
     cards.addEventListener('click', event => { if (!event.target.classList.contains('copy-btn')) return; const number = event.target.dataset.number; const showToast = () => { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1800); }; if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(number).then(showToast).catch(() => fallbackCopy(number)); } else { fallbackCopy(number); } function fallbackCopy(value) { const input = document.createElement('input'); input.value = value; document.body.appendChild(input); input.select(); document.execCommand('copy'); input.remove(); showToast(); } });
-    document.getElementById('paidButton').addEventListener('click', () => { const name = document.getElementById('orderName').value || 'Mijoz'; const phone = document.getElementById('orderPhone').value || 'Telefon ko\'rsatilmagan'; const note = document.getElementById('orderMessage').value || 'Qo\'shimcha izoh yo\'q'; const text = `Salom! Men LUX MEDIA sayti orqali ${activeService} xizmati uchun to'lov qildim. Buyurtmamni tasdiqlab, belgilab qo'ying.\nIsm: ${name}\nTelefon: ${phone}\nXabar: ${note}`; window.open(`https://t.me/behruzbek_0875?text=${encodeURIComponent(text)}`, '_blank'); });
+    document.getElementById('paidButton').addEventListener('click', () => { const name = document.getElementById('orderName').value || 'Mijoz'; const phone = document.getElementById('orderPhone').value || 'Telefon ko\'rsatilmagan'; const month = document.getElementById('orderMonth').value || 'Tanlanmagan'; const day = document.getElementById('orderDay').value || 'Tanlanmagan'; const time = document.getElementById('orderTime').value || 'Tanlanmagan'; const note = document.getElementById('orderMessage').value || 'Qo\'shimcha izoh yo\'q'; const text = `Salom! Men LUX MEDIA sayti orqali ${activeService} xizmati uchun to'lov qildim. Buyurtmamni tasdiqlab, belgilab qo'ying.\nIsm: ${name}\nTelefon: ${phone}\nSana: ${month}, ${day}\nVaqt: ${time}\nMijoz fikri: ${note}`; window.open(`https://t.me/behruzbek_0875?text=${encodeURIComponent(text)}`, '_blank'); });
     const menuToggle = document.getElementById('menuToggle'); const navLinks = document.getElementById('navLinks');
     menuToggle.addEventListener('click', () => { const open = navLinks.classList.toggle('open'); menuToggle.setAttribute('aria-expanded', open); });
     navLinks.addEventListener('click', event => { if (event.target.tagName === 'A') navLinks.classList.remove('open'); });
