@@ -144,6 +144,18 @@
     .contact-links a:hover { color: var(--gold); border-color: var(--gold); transform: translateX(4px); }
     .contact-links img { width: 22px; height: 22px; object-fit: contain; }
     .contact-links .contact-icon { color: var(--gold); font-size: 1.25rem; width: 22px; text-align: center; }
+    .auth-panel { margin-top: 20px; padding: 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+    .google-login { width: 100%; display: flex; align-items: center; justify-content: center; gap: 9px; border: 1px solid var(--gold); color: var(--gold); background: transparent; padding: 12px; border-radius: 7px; font-weight: 700; font-size: .8rem; }
+    .google-login:hover { background: var(--gold); color: #15120c; }
+    .google-login:disabled { cursor: wait; opacity: .65; }
+    .auth-user { display: flex; align-items: center; gap: 10px; color: var(--text); font-size: .8rem; }
+    .auth-user[hidden] { display: none; }
+    .auth-user img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; }
+    .auth-user-info { min-width: 0; }
+    .auth-user-info b, .auth-user-info span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .auth-user-info span { color: var(--muted); font-size: .72rem; }
+    .auth-message { color: var(--muted); font-size: .72rem; margin: 10px 0 0; }
+    .auth-message.error { color: var(--orange); }
     .contact-note { margin-top: 20px; color: var(--muted); font-size: .77rem; }
     .calendar-section { background: linear-gradient(180deg, #111416, #090a0b); border-top: 1px solid var(--line); }
     .calendar-frame { width: 100%; height: 600px; border: 1px solid var(--line); background: var(--panel); }
@@ -171,10 +183,6 @@
     .order-fields select { width: 100%; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 11px 12px; outline: none; appearance: auto; }
     .order-fields textarea { min-height: 65px; resize: vertical; }
     .order-fields input:focus, .order-fields select:focus, .order-fields textarea:focus { border-color: var(--cyan); }
-    .calendar-sync { grid-column: 1 / -1; display: grid; gap: 8px; margin: 2px 0 4px; }
-    .calendar-sync a { display: none; width: max-content; color: var(--cyan); border-bottom: 1px solid var(--cyan); font-size: .78rem; }
-    .calendar-sync a.ready { display: inline-block; }
-    .calendar-sync small { color: var(--muted); font-size: .7rem; }
     .card-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 12px 14px; border: 1px solid var(--line); border-radius: 7px; }
     .card-row.selected { border-color: var(--gold); background: rgba(242, 191, 102, .07); }
     .card-row label { display: flex; gap: 10px; align-items: center; cursor: pointer; font-size: .78rem; }
@@ -288,7 +296,7 @@
 
     <section class="calendar-section" id="calendar"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Google Calendar</div><h2>Bo'sh vaqtni<br>tanlang.</h2></div><p>Buyurtma sanasini ko'ring va tanlangan vaqtni Google Calendar'ga saqlang.</p></div><iframe class="calendar-frame" src="https://calendar.google.com/calendar/embed?src=bbehruzbek05%40gmail.com&amp;ctz=Asia%2FSamarkand" frameborder="0" scrolling="no" title="LUX MEDIA Google Calendar"></iframe></div></section>
 
-    <section class="contact" id="contact"><div class="wrap contact-grid"><div><div class="eyebrow">Aloqa</div><h2>Birga<br>yaratamiz.</h2><p class="contact-intro">Loyihangizni qisqacha yozib qoldiring. Men siz bilan bog'lanib, keyingi qadamlarni belgilayman.</p><div class="contact-links"><a href="tel:+998947931114">Telefon &nbsp; 94 793 11 14 &nearr;</a><a href="https://t.me/behruzbek_0875" target="_blank" rel="noopener">Telegram &nbsp; @behruzbek_0875 &nearr;</a><a href="https://instagram.com/behruzbek.ac" target="_blank" rel="noopener">Instagram &nbsp; @behruzbek.ac &nearr;</a><a href="mailto:behruzbek.ac@gmail.com">Email &nbsp; behruzbek.ac@gmail.com &nearr;</a></div></div><form class="contact-form" id="contactForm"><div class="field"><label for="name">ISMINGIZ</label><input id="name" required placeholder="Behruzbek" autocomplete="name"></div><div class="field"><label for="email">EMAIL</label><input id="email" type="email" required placeholder="siz@email.com" autocomplete="email"></div><div class="field"><label for="message">LOYIHA HAQIDA</label><textarea id="message" required placeholder="Qanday loyiha ustida ishlaymiz?"></textarea></div><button class="button-primary" type="submit">Xabar yuborish &rarr;</button><div class="form-status" id="formStatus">Xabaringiz tayyor. Telegram orqali yuborish uchun havola ochildi.</div></form></div></section>
+    <section class="contact" id="contact"><div class="wrap contact-grid"><div><div class="eyebrow">Aloqa</div><h2>Birga<br>yaratamiz.</h2><p class="contact-intro">Loyihangizni qisqacha yozib qoldiring. Men siz bilan bog'lanib, keyingi qadamlarni belgilayman.</p><div class="contact-links"><a href="tel:+998947931114">Telefon &nbsp; 94 793 11 14 &nearr;</a><a href="https://t.me/behruzbek_0875" target="_blank" rel="noopener">Telegram &nbsp; @behruzbek_0875 &nearr;</a><a href="https://instagram.com/behruzbek.ac" target="_blank" rel="noopener">Instagram &nbsp; @behruzbek.ac &nearr;</a><a href="mailto:behruzbek.ac@gmail.com">Email &nbsp; behruzbek.ac@gmail.com &nearr;</a></div><div class="auth-panel"><button id="google-login" class="google-login" type="button">Google orqali kirish</button><div id="auth-user" class="auth-user" hidden><img id="auth-photo" alt="Profil rasmi"><div class="auth-user-info"><b id="auth-name"></b><span id="auth-email"></span></div></div><p id="auth-message" class="auth-message" role="status">Buyurtma berishdan oldin Google orqali kirishingiz mumkin.</p></div></div><form class="contact-form" id="contactForm"><div class="field"><label for="name">ISMINGIZ</label><input id="name" required placeholder="Behruzbek" autocomplete="name"></div><div class="field"><label for="email">EMAIL</label><input id="email" type="email" required placeholder="siz@email.com" autocomplete="email"></div><div class="field"><label for="message">LOYIHA HAQIDA</label><textarea id="message" required placeholder="Qanday loyiha ustida ishlaymiz?"></textarea></div><button class="button-primary" type="submit">Xabar yuborish &rarr;</button><div class="form-status" id="formStatus">Xabaringiz tayyor. Telegram orqali yuborish uchun havola ochildi.</div></form></div></section>
   </main>
 
   <footer><div class="wrap footer-row"><strong class="logo"><img class="logo-image" src="Gemini_Generated_Image_o5z5yvo5z5yvo5z5.jpg" alt="">LUX MEDIA</strong><span>&copy; 2026 Behruzbek Oribjonov. Barcha huquqlar himoyalangan.</span></div></footer>
@@ -344,18 +352,14 @@
     contactLinks.after(serviceNote);
     const orderFields = document.createElement('div');
     orderFields.className = 'order-fields';
-    orderFields.innerHTML = '<div class="field"><label for="orderName">ISMINGIZ</label><input id="orderName" placeholder="Ismingiz"></div><div class="field"><label for="orderPhone">TELEFON</label><input id="orderPhone" placeholder="+998 90 000 00 00"></div><div class="field"><label for="orderMonth">OY</label><select id="orderMonth"><option value="">Oyni tanlang</option><option>Yanvar</option><option>Fevral</option><option>Mart</option><option>Aprel</option><option>May</option><option>Iyun</option><option>Iyul</option><option>Avgust</option><option>Sentabr</option><option>Oktabr</option><option>Noyabr</option><option>Dekabr</option></select></div><div class="field"><label for="orderDay">KUN</label><select id="orderDay"><option value="">Kunni tanlang</option>' + Array.from({ length: 31 }, (_, index) => `<option>${index + 1}-kun</option>`).join('') + '</select></div><div class="field"><label for="orderTime">SOAT</label><select id="orderTime"><option value="">Vaqtni tanlang</option><option>09:00 - 11:00</option><option>11:00 - 13:00</option><option>14:00 - 16:00</option><option>16:00 - 18:00</option><option>18:00 - 20:00</option></select></div><div class="field"><label for="orderMessage">MIJOZ FIKRI / QISQA XABAR</label><textarea id="orderMessage" placeholder="Buyurtmangiz yoki istagingiz haqida yozing"></textarea></div><div class="calendar-sync"><small id="calendarStatus">Oy, kun va soatni tanlang.</small><a id="calendarLink" href="#" target="_blank" rel="noopener">Google Calendar\'ga qo\'shish &rarr;</a></div>';
+    orderFields.innerHTML = '<div class="field"><label for="orderName">ISMINGIZ</label><input id="orderName" placeholder="Ismingiz"></div><div class="field"><label for="orderPhone">TELEFON</label><input id="orderPhone" placeholder="+998 90 000 00 00"></div><div class="field"><label for="orderMonth">OY</label><select id="orderMonth"><option value="">Oyni tanlang</option><option>Yanvar</option><option>Fevral</option><option>Mart</option><option>Aprel</option><option>May</option><option>Iyun</option><option>Iyul</option><option>Avgust</option><option>Sentabr</option><option>Oktabr</option><option>Noyabr</option><option>Dekabr</option></select></div><div class="field"><label for="orderDay">KUN</label><select id="orderDay"><option value="">Kunni tanlang</option>' + Array.from({ length: 31 }, (_, index) => `<option>${index + 1}-kun</option>`).join('') + '</select></div><div class="field"><label for="orderMessage">MIJOZ FIKRI / QISQA XABAR</label><textarea id="orderMessage" placeholder="Buyurtmangiz yoki istagingiz haqida yozing"></textarea></div>';
     cards.before(orderFields);
-    const monthNumbers = { Yanvar: 0, Fevral: 1, Mart: 2, Aprel: 3, May: 4, Iyun: 5, Iyul: 6, Avgust: 7, Sentabr: 8, Oktabr: 9, Noyabr: 10, Dekabr: 11 };
-    let lastCalendarUrl = '';
-    const updateCalendarLink = () => { const month = document.getElementById('orderMonth').value; const day = document.getElementById('orderDay').value; const time = document.getElementById('orderTime').value; const link = document.getElementById('calendarLink'); const status = document.getElementById('calendarStatus'); if (!month || !day || !time) { link.classList.remove('ready'); status.textContent = 'Oy, kun va soatni tanlang.'; return; } const [startHour, endHour] = time.split(' - ').map(value => value.split(':')[0]); const year = new Date().getFullYear(); const start = new Date(year, monthNumbers[month], parseInt(day, 10), Number(startHour)); const end = new Date(year, monthNumbers[month], parseInt(day, 10), Number(endHour)); const formatDate = date => `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}T${String(date.getHours()).padStart(2, '0')}${String(date.getMinutes()).padStart(2, '0')}00`; const title = `${activeService} - LUX MEDIA`; link.href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${formatDate(start)}/${formatDate(end)}&details=${encodeURIComponent('LUX MEDIA buyurtmasi')}&ctz=Asia%2FSamarkand`; link.classList.add('ready'); status.textContent = 'Vaqt tanlandi. Google Calendar oynasi tayyor.'; if (lastCalendarUrl !== link.href) { lastCalendarUrl = link.href; window.open(link.href, '_blank'); } };
-    orderFields.addEventListener('change', event => { if (event.target.matches('select')) updateCalendarLink(); });
     cardData.forEach(([name, number], index) => {
       const row = document.createElement('div'); row.className = 'card-row' + (index === 0 ? ' selected' : '');
       row.innerHTML = `<label><input type="radio" name="payment-card" value="${name}" ${index === 0 ? 'checked' : ''}><span><b>${name}</b><span class="card-owner">Behruzbek O.</span><span class="card-number">${number}</span></span></label><button class="copy-btn" data-number="${number}">Nusxalash</button>`;
       cards.appendChild(row);
     });
-    document.querySelectorAll('.order-btn').forEach(button => button.addEventListener('click', () => { activeService = button.dataset.service; serviceLabel.textContent = activeService; document.getElementById('orderName').value = ''; document.getElementById('orderPhone').value = ''; document.getElementById('orderMonth').value = ''; document.getElementById('orderDay').value = ''; document.getElementById('orderTime').value = ''; document.getElementById('orderMessage').value = ''; document.getElementById('calendarLink').classList.remove('ready'); document.getElementById('calendarStatus').textContent = 'Oy, kun va soatni tanlang.'; lastCalendarUrl = ''; document.querySelector('.card-row input').checked = true; document.querySelectorAll('.card-row').forEach((row, index) => row.classList.toggle('selected', index === 0)); modal.classList.add('open'); document.body.style.overflow = 'hidden'; }));
+    document.querySelectorAll('.order-btn').forEach(button => button.addEventListener('click', () => { activeService = button.dataset.service; serviceLabel.textContent = activeService; document.getElementById('orderName').value = ''; document.getElementById('orderPhone').value = ''; document.getElementById('orderMonth').value = ''; document.getElementById('orderDay').value = ''; document.getElementById('orderMessage').value = ''; document.querySelector('.card-row input').checked = true; document.querySelectorAll('.card-row').forEach((row, index) => row.classList.toggle('selected', index === 0)); modal.classList.add('open'); document.body.style.overflow = 'hidden'; }));
     function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; }
     document.getElementById('closeModal').addEventListener('click', closeModal);
     modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
@@ -363,12 +367,92 @@
     cards.addEventListener('change', event => { if (event.target.name === 'payment-card') { document.querySelectorAll('.card-row').forEach(row => row.classList.remove('selected')); event.target.closest('.card-row').classList.add('selected'); } });
     const toast = document.getElementById('toast');
     cards.addEventListener('click', event => { if (!event.target.classList.contains('copy-btn')) return; const number = event.target.dataset.number; const showToast = () => { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1800); }; if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(number).then(showToast).catch(() => fallbackCopy(number)); } else { fallbackCopy(number); } function fallbackCopy(value) { const input = document.createElement('input'); input.value = value; document.body.appendChild(input); input.select(); document.execCommand('copy'); input.remove(); showToast(); } });
-    document.getElementById('paidButton').addEventListener('click', () => { const name = document.getElementById('orderName').value || 'Mijoz'; const phone = document.getElementById('orderPhone').value || 'Telefon ko\'rsatilmagan'; const month = document.getElementById('orderMonth').value || 'Tanlanmagan'; const day = document.getElementById('orderDay').value || 'Tanlanmagan'; const time = document.getElementById('orderTime').value || 'Tanlanmagan'; const note = document.getElementById('orderMessage').value || 'Qo\'shimcha izoh yo\'q'; const text = `Salom! Men LUX MEDIA sayti orqali ${activeService} xizmati uchun to'lov qildim. Buyurtmamni tasdiqlab, belgilab qo'ying.\nIsm: ${name}\nTelefon: ${phone}\nSana: ${month}, ${day}\nVaqt: ${time}\nMijoz fikri: ${note}`; window.open(`https://t.me/behruzbek_0875?text=${encodeURIComponent(text)}`, '_blank'); });
+    document.getElementById('paidButton').addEventListener('click', () => { const name = document.getElementById('orderName').value || 'Mijoz'; const phone = document.getElementById('orderPhone').value || 'Telefon ko\'rsatilmagan'; const month = document.getElementById('orderMonth').value || 'Tanlanmagan'; const day = document.getElementById('orderDay').value || 'Tanlanmagan'; const note = document.getElementById('orderMessage').value || 'Qo\'shimcha izoh yo\'q'; const text = `Salom! Men LUX MEDIA sayti orqali ${activeService} xizmati uchun to'lov qildim. Buyurtmamni tasdiqlab, belgilab qo'ying.\nIsm: ${name}\nTelefon: ${phone}\nSana: ${month}, ${day}\nMijoz fikri: ${note}`; window.open(`https://t.me/behruzbek_0875?text=${encodeURIComponent(text)}`, '_blank'); });
     const menuToggle = document.getElementById('menuToggle'); const navLinks = document.getElementById('navLinks');
     menuToggle.addEventListener('click', () => { const open = navLinks.classList.toggle('open'); menuToggle.setAttribute('aria-expanded', open); });
     navLinks.addEventListener('click', event => { if (event.target.tagName === 'A') navLinks.classList.remove('open'); });
     window.addEventListener('scroll', () => document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20));
     document.getElementById('contactForm').addEventListener('submit', event => { event.preventDefault(); const name = document.getElementById('name').value; const message = `Salom! Men ${name}. ${document.getElementById('message').value}`; window.open(`https://t.me/behruzbek_0875?text=${encodeURIComponent(message)}`, '_blank'); document.getElementById('formStatus').style.display = 'block'; event.target.reset(); });
+  </script>
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js';
+    import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js';
+    import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js';
+
+    const firebaseConfig = {
+      apiKey: 'AIzaSyD8wksB4_UEI82PBbVssPpMkvjk90cfdy4',
+      authDomain: 'lukus-media.firebaseapp.com',
+      projectId: 'lukus-media',
+      storageBucket: 'lukus-media.firebasestorage.app',
+      messagingSenderId: '595247295607',
+      appId: '1:595247295607:web:f7d6715a14726618c1ea72',
+      measurementId: 'G-XFE3XX7GC1'
+    };
+
+    const app = initializeApp(firebaseConfig);
+    getAnalytics(app);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+    const loginButton = document.getElementById('google-login');
+    const authUser = document.getElementById('auth-user');
+    const authPhoto = document.getElementById('auth-photo');
+    const authName = document.getElementById('auth-name');
+    const authEmail = document.getElementById('auth-email');
+    const authMessage = document.getElementById('auth-message');
+
+    loginButton.addEventListener('click', async () => {
+      loginButton.disabled = true;
+      authMessage.classList.remove('error');
+      authMessage.textContent = 'Google oynasi ochilmoqda...';
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        console.log('Google orqali muvaffaqiyatli kirildi:', {
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL
+        });
+        authPhoto.src = user.photoURL || '';
+        authPhoto.alt = `${user.displayName || 'Foydalanuvchi'} profil rasmi`;
+        authName.textContent = user.displayName || 'Google foydalanuvchisi';
+        authEmail.textContent = user.email || 'Email mavjud emas';
+        authUser.hidden = false;
+        loginButton.textContent = 'Google orqali kirildi';
+        authMessage.textContent = 'Tizimga muvaffaqiyatli kirdingiz.';
+      } catch (error) {
+        console.error('Google Sign-In xatosi:', error);
+        authMessage.classList.add('error');
+        authMessage.textContent = error.code === 'auth/popup-closed-by-user'
+          ? 'Kirish oynasi yopildi.'
+          : 'Google orqali kirishda xatolik yuz berdi. Qayta urinib ko\'ring.';
+      } finally {
+        loginButton.disabled = false;
+      }
+    });
+
+    onAuthStateChanged(auth, user => {
+      if (user) {
+        console.log('Autentifikatsiya holati: tizimga kirgan', {
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL
+        });
+        authPhoto.src = user.photoURL || '';
+        authPhoto.alt = `${user.displayName || 'Foydalanuvchi'} profil rasmi`;
+        authName.textContent = user.displayName || 'Google foydalanuvchisi';
+        authEmail.textContent = user.email || 'Email mavjud emas';
+        authUser.hidden = false;
+        loginButton.textContent = 'Google orqali kirildi';
+        authMessage.classList.remove('error');
+        authMessage.textContent = 'Tizimga muvaffaqiyatli kirdingiz.';
+      } else {
+        console.log('Autentifikatsiya holati: tizimga kirilmagan');
+        authUser.hidden = true;
+        loginButton.textContent = 'Google orqali kirish';
+        authMessage.classList.remove('error');
+        authMessage.textContent = 'Buyurtma berishdan oldin Google orqali kirishingiz mumkin.';
+      }
+    });
   </script>
 </body>
 </html>
